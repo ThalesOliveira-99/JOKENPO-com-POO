@@ -5,6 +5,7 @@ import java.util.Random;
 public class Computador {
 
 	private int opcao;
+	private int vitorias;
 	
 	Random gerador = new Random();
 	
@@ -31,7 +32,19 @@ public class Computador {
 		this.gerador = gerador;
 	}
 	
+	public int getVitorias() {
+		return vitorias;
+	}
+
+	public void setVitorias(int vitoria) {
+		this.vitorias = vitorias;
+	}
+
 	public void gerarJogada() {
 		setOpcao(gerador.nextInt(3)+ 1);
+	}
+	
+	public void adicionarVitoria() {
+		this.vitorias ++;
 	}
 }

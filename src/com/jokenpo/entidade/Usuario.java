@@ -4,6 +4,7 @@ public class Usuario {
 
 	private String nome;
 	private Integer opcao;
+	private int vitorias;
 	
 	public Usuario() {
 	}
@@ -30,6 +31,18 @@ public class Usuario {
 
 	public void setOpcao(Integer opcao) {
 		this.opcao = opcao;
+	}
+
+	public int getVitorias() {
+		return vitorias;
+	}
+
+	public void setVitorias(int vitorias) {
+		this.vitorias = vitorias;
+	}
+	
+	public void adicionarVitoria() {
+		this.vitorias ++;
 	}
 	
 }

@@ -5,18 +5,49 @@ import com.jokenpo.entidade.Usuario;
 
 public class JokenpoService {
 
-	public void jogada(Usuario usuario, Computador pc) {
-		//Pedra = 1, Papel = 2, Tesoura = 3
-		
-		if(usuario.getOpcao()  == (pc.getOpcao())) {
-			System.out.println("Empate!");
-		} else if(usuario.getOpcao() == 1 && pc.getOpcao() == 3 || usuario.getOpcao() == 2 && pc.getOpcao() == 1 || usuario.getOpcao() == 3 && pc.getOpcao() == 2) {
-			System.out.println("Vitoria do " + usuario.getNome());
-		} else {
-			System.out.println("Vitória do PC");
-		}
-	}
-		
-}
-	
+    private int empates;
 
+    public JokenpoService() {
+        this.empates = 0; 
+    }
+
+    public void jogada(Usuario usuario, Computador pc) {
+        // Opções: 1 = Pedra, 2 = Papel, 3 = Tesoura
+        int opcaoUsuario = usuario.getOpcao();
+        int opcaoPc = pc.getOpcao();
+
+        if (opcaoUsuario == opcaoPc) {
+            System.out.println("\nresultado: EMPATE!");
+            this.empates++; 
+        } 
+       
+        else if ((opcaoUsuario == 1 && opcaoPc == 3) || 
+                 (opcaoUsuario == 2 && opcaoPc == 1) || 
+                 (opcaoUsuario == 3 && opcaoPc == 2)) {
+            System.out.println("\nresultado: Vitória de " + usuario.getNome() + "!");
+            usuario.adicionarVitoria(); 
+        } 
+   
+        else {
+            System.out.println("\nresultado: Vitória do Computador!");
+            pc.adicionarVitoria(); 
+        }
+
+       
+        exibirPlacar(usuario, pc);
+    }
+
+    public void exibirPlacar(Usuario usuario, Computador pc) {
+        System.out.println("===============================");
+        System.out.println("        PLACAR ACUMULADO       ");
+        System.out.println("===============================");
+        System.out.println(usuario.getNome() + ": " + usuario.getVitorias() + " vitória(s)");
+        System.out.println("Computador: " + pc.getVitorias() + " vitória(s)");
+        System.out.println("Empates: " + this.empates);
+        System.out.println("===============================\n");
+    }
+
+    public int getEmpates() {
+        return empates;
+    }
+}

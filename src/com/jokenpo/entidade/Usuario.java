@@ -8,6 +8,10 @@ public class Usuario {
 	public Usuario() {
 	}
 	
+	public Usuario(String nome) {
+		this.nome = nome;
+	}
+	
 	public Usuario(String nome, int opcao) {
 		this.nome = nome;
 		this.opcao = opcao;	}

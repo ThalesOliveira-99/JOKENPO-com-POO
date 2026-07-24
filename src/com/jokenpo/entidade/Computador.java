@@ -31,4 +31,7 @@ public class Computador {
 		this.gerador = gerador;
 	}
 	
+	public void gerarJogada() {
+		setOpcao(gerador.nextInt(3));
+	}
 }
